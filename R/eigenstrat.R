@@ -170,7 +170,7 @@ filter_bed <- function(data, bed, remove = FALSE, outfile = tempfile(fileext = "
   # for our purposes, this means either 0 (no overlap) or 1 (overlap)
   output <- tempfile()
   # run bedtools
-  sprintf("bedtools intersect %s -c -a %s -b %s -sorted > %s",
+  sprintf("bedtools intersect %s -c -a %s -b %s -nonamecheck > %s",
           ifelse(remove, "-v", ""), tmpbed, bed, output) %>% system()
   # collect the results
   snp_hits <- readr::read_tsv(output,
